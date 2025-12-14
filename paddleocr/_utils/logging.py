@@ -12,16 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Logging utilities for PaddleOCR.
+
+This module provides a configured logger for the PaddleOCR package.
+"""
+
+from __future__ import annotations
+
 import logging
 
 from .._env import DISABLE_AUTO_LOGGING_CONFIG
 
-LOGGER_NAME = "paddleocr"
+LOGGER_NAME: str = "paddleocr"
 
-logger = logging.getLogger(LOGGER_NAME)
+logger: logging.Logger = logging.getLogger(LOGGER_NAME)
 
 
-def _set_up_logger():
+def _set_up_logger() -> None:
+    """Set up the default logger configuration.
+
+    Configures the logger with a standard format and ERROR level by default.
+    This setup can be disabled by setting the DISABLE_AUTO_LOGGING_CONFIG
+    environment variable.
+    """
     if DISABLE_AUTO_LOGGING_CONFIG:
         return
 

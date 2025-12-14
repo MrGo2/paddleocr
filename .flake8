@@ -1,0 +1,66 @@
+# Flake8 Configuration for PaddleOCR
+#
+# This configuration provides expanded code quality checks while maintaining
+# compatibility with the existing codebase.
+#
+# Error Code Reference:
+# - E: pycodestyle errors
+# - W: pycodestyle warnings
+# - F: pyflakes errors
+# - C: mccabe complexity
+
+[flake8]
+# Maximum line length (consistent with Black)
+max-line-length = 88
+
+# Maximum complexity (McCabe)
+max-complexity = 15
+
+# Select specific error codes to check
+# E9: Runtime errors (syntax errors, etc.)
+# F: All pyflakes errors (undefined names, unused imports, etc.)
+# W: Important warnings
+# E721: Type comparison issues
+# E501: Line too long (handled by Black, so we ignore it)
+select = E9,F,W6,E721
+
+# Ignore specific error codes
+# E501: Line too long - handled by Black formatter
+# W503: Line break before binary operator - conflicts with Black
+# E203: Whitespace before ':' - conflicts with Black
+# F401: Imported but unused - sometimes intentional for __init__.py exports
+ignore = E501,W503,E203
+
+# Exclude directories from checking
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    *.egg-info,
+    .eggs,
+    benchmark,
+    test_tipc,
+    .tox,
+    .venv,
+    venv,
+    docs,
+
+# Per-file ignores
+# Allow unused imports in __init__.py files (re-exports)
+per-file-ignores =
+    __init__.py:F401
+    paddleocr/__init__.py:F401
+    ppocr/__init__.py:F401
+
+# Show source code for each error
+show-source = True
+
+# Count errors
+count = True
+
+# Show statistics at the end
+statistics = True
+
+# Output format
+format = default
