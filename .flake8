@@ -47,11 +47,12 @@ exclude =
     docs,
 
 # Per-file ignores
-# Allow unused imports in __init__.py files (re-exports)
+# Allow unused imports in __init__.py files and re-export modules
 per-file-ignores =
     __init__.py:F401
     paddleocr/__init__.py:F401
     ppocr/__init__.py:F401
+    paddleocr/_utils/deprecation.py:F401
 
 # Show source code for each error
 show-source = True
